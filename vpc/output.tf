@@ -53,3 +53,15 @@ output "private_data_subnet_az1a_id" {
 output "private_data_subnet_az1b_id" {
     value = aws_subnet.private_data_subnet_az1b.id   
 }
+
+# export the first avalaibilty 
+output "avalaibility_zone_1" {
+    value = data.aws_availability_zones.avalability_zone.names[0]
+  
+}
+
+# export the second avalaibility
+output "avalaibility_zone_2" {
+    value = data.aws_availability_zones.avalability_zone.names[1]
+  
+}
