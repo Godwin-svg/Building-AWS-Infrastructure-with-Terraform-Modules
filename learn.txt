@@ -1,0 +1,8 @@
+DynamoDB table
+=======================================================================================
+Terraform uses DynamoDB table (the one you specified: terraform-state-lock) to place a 
+lock whenever you run a command (plan, apply, etc.) so that two people (or processes) 
+don’t try to update the state at the same time.
+
+- Manually unlock state file with Terraform
+terraform force-unlock <LOCK_ID>
