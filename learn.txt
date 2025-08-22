@@ -4,5 +4,20 @@ Terraform uses DynamoDB table (the one you specified: terraform-state-lock) to p
 lock whenever you run a command (plan, apply, etc.) so that two people (or processes) 
 don’t try to update the state at the same time.
 
-- Manually unlock state file with Terraform
+===> Manually unlock state file with Terraform
 terraform force-unlock <LOCK_ID>
+
+Terraform is still holding on to an old state or the backend configuration wasn’t refreshed.
+============================================================================================
+- Steps to refresh Terraform with new code
+===> Reinitialize Terraform (so it re-reads your updated files):
+terraform init -reconfigure
+
+- Validate your new code to make sure there are no syntax errors:
+======> terraform validate
+
+- See what Terraform plans to do with the updated code:
+=====> terraform plan
+
+- Apply the changes:
+=====> terraform apply
