@@ -9,7 +9,7 @@ resource "aws_security_group" "alb_security_group" {
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        cidr_blocks = var.default_cidr
+        cidr_blocks = ["0.0.0.0/0"]
     }
 
     ingress {
@@ -23,7 +23,7 @@ resource "aws_security_group" "alb_security_group" {
     egress {
         from_port = 0
         to_port = 0
-        cidr_blocks = var.default_cidr
+        cidr_blocks = ["0.0.0.0/0"]
         protocol = "-1"
     }
 
@@ -50,7 +50,7 @@ resource "aws_security_group" "bastion_security_group" {
     egress {
         from_port = 0
         to_port = 0
-        cidr_blocks = var.default_cidr
+        cidr_blocks = ["0.0.0.0/0"]
         protocol = "-1"
     }
 
