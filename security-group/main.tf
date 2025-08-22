@@ -35,7 +35,7 @@ resource "aws_security_group" "alb_security_group" {
 
 # create security group for the bastion host aka jump box
 resource "aws_security_group" "bastion_security_group" {
-    name = "${var.project_name}-${var.environment}-alb_security_group"
+    name = "${var.project_name}-${var.environment}-bastion_security_group"
     description = "enable ssh access on port 22"
     vpc_id = var.vpc_id
 
@@ -55,7 +55,7 @@ resource "aws_security_group" "bastion_security_group" {
     }
 
     tags = {
-      Name = "${var.project_name}-${var.environment}-alb_security_group"
+      Name = "${var.project_name}-${var.environment}-bastion_security_group"
     }
   
 }
