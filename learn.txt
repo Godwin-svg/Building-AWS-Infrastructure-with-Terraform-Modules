@@ -21,3 +21,52 @@ terraform init -reconfigure
 
 - Apply the changes:
 =====> terraform apply
+
+
+================================ Data Sources ==========================================
+- In Terraform, there are two main things you work with:
+
+=> 1. Resources → Things Terraform creates or manages.
+Example:
+
+resource "aws_db_instance" "mydb" {
+  # creates a new RDS instance
+}
+
+=> 2. Data Sources → Things Terraform reads / looks up (already exist in AWS) 
+so you can use them in your configuration.
+Example:
+
+data "aws_db_snapshot" "example" {
+  most_recent            = true
+  db_instance_identifier = "mydb-instance"
+}
+
+
+- So, what does data "aws_db_snapshot" mean?
+It tells Terraform:
+👉 “Don’t create a new snapshot. Instead, go and find an existing 
+snapshot in AWS and make its information available for me to use.”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
