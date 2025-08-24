@@ -85,14 +85,30 @@ resource "aws_acm_certificate_validation" "example" {
   validation_record_fqdns = [for record in aws_route53_record.example : record.fqdn]
 }
 
+=============== Why we have one Target Group and two Listeners in your code:==============================================
+-1 Target Group (TG)
 
+- A Target Group defines where the traffic will be forwarded (EC2s, ECS tasks, Lambda, etc.)
+- this is where your backend instances (EC2, ECS, Lambda, etc.) are registered.
 
+-2 Listener (L)
+- A Listener is just a “port + protocol” entry point on the load balancer.
+- Port 80 (HTTP) → only used to redirect traffic to HTTPS (not to forward traffic to targets).
+- Port 443 (HTTPS) → actually forwards requests to the Target Group.
 
+So in practice:
+- HTTP (80) → redirects → HTTPS (443).
+- HTTPS (443) → forwards to the TG.
 
+Why not two Target Groups?
 
+Because both listeners (after the redirect) end up sending traffic to the same backend (same app servers).
 
+Port 80 is just for redirect, not for serving.
 
+Port 443 is for serving traffic securely.
 
+So only one Target Group is needed unless you want different backends for different condition
 
 
 
