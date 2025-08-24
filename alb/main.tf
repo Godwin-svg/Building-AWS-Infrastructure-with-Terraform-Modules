@@ -27,7 +27,7 @@ resource "aws_lb_target_group" "alb_target_group" {
       interval = 30
       matcher = "200,301,302"
       path = "/"
-      port = "HTTP"
+      port = "traffic-port"
       timeout = 5
       unhealthy_threshold = 2
     }
