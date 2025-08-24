@@ -2,7 +2,7 @@
 
 # create database subnet group  
 resource "aws_db_subnet_group" "database_subnet_group" {
-    name = "${var.project_name}-${var.environment}-database_subnet_group"
+    name = lower("${var.project_name}-${var.environment}-database_subnet_group")
     subnet_ids = [ var.private_data_subnet_az1a_id, var.private_data_subnet_az1b_id ]
     description = "subnets for database instance"
 
