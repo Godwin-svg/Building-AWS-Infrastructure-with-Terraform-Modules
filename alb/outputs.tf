@@ -14,3 +14,9 @@ output "application_load_balancer_zone_id" {
     value = aws_lb.application_load_balancer.zone_id 
   
 }
+
+# export target type
+output "target_type" {
+    value = aws_lb_target_group.alb_target_group.target_type
+  
+}
