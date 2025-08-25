@@ -34,6 +34,10 @@ resource "aws_subnet" "public_subnet_az1a" {
       Name = "${var.project_name}-${var.environment}-public_subnet_az1a"
     }
 
+    lifecycle {
+    prevent_destroy = true
+  }
+
 }
 
 # create public subnet az1b
