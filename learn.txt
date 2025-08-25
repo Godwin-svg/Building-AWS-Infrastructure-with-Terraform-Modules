@@ -114,15 +114,48 @@ So only one Target Group is needed unless you want different backends for differ
 ================================== acm ( amazon certificate manager ) =====================================
 - subject_alternative_names = subdomain name
 
+aws_s3_object
+==============================================================================
+- aws_s3_object in Terraform
 
+resource "aws_s3_object" "upload_env_file" { 
+bucket = aws_s3_bucket.env_file_bucket.id 
+key = var.env_file_name 
+source = "./${var.env_file_name}" 
+}
 
+- => aws_s3_object is a Terraform resource type used to upload and manage 
+individual files (objects) in an AWS S3 bucket.
 
+- key → the name/path of the file in S3 (remote)
+- source → the name/path of the file on your local machine (local) 
 
+- In S3, the file will be at: s3://your-bucket-name/configs/prod.env
+-Locally, Terraform reads the file from ./production.env.
 
+"./${var.env_file_name}" is a relative path:
 
+./ → current working directory (where you run terraform apply)
 
+${var.env_file_name} → the value of the variable env_file_name
 
+===>
+resource "aws_s3_object" "upload_env_file" {
+  bucket = aws_s3_bucket.env_file_bucket.id
+  key    = "configs/production.env"
+  source = "./production.env"
+  acl    = "private"
+}
 
+What happens here:
+++===========
+-Terraform finds ./production.env on your machine.
+
+-Terraform uploads it to the S3 bucket env_file_bucket.
+
+-Inside S3, it will be stored as configs/production.env.
+
+-The file will be private by default unless you change acl
 
 
 
