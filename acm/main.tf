@@ -17,6 +17,7 @@ data "aws_route53_zone" "route53_zone" {
   
 }
 
+# create a record set in route 53 for domain validation
 resource "aws_route53_record" "route53_record" {
   for_each = {
     for dvo in aws_acm_certificate.acm_certificate.domain_validation_options : dvo.domain_name => {
@@ -31,7 +32,7 @@ resource "aws_route53_record" "route53_record" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.route53_zone.id 
+  zone_id         = data.aws_route53_zone.route53_zone.id  
 }
 
 resource "aws_acm_certificate_validation" "acm_certificate_validation" {

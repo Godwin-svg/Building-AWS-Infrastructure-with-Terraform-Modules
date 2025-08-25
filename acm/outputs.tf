@@ -7,5 +7,4 @@ output "certificate_arn" {
 # export the domain name
 output "domain_name" {
     value = var.domain_name
-  
 }

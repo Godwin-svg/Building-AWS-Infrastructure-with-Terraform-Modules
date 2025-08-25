@@ -111,8 +111,8 @@ Port 443 is for serving traffic securely.
 So only one Target Group is needed unless you want different backends for different condition
 
 
-
-
+================================== acm ( amazon certificate manager ) =====================================
+- subject_alternative_names = subdomain name
 
 
 
