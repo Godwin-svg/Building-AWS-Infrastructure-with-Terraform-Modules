@@ -31,7 +31,7 @@ resource "aws_nat_gateway" "nat_gateway_az1a" {
     prevent_destroy = false
   }
 
-    depends_on = [aws_internet_gateway.internet_gateway]
+    depends_on = [var.internet_gateway_id]
 
 }
 
@@ -48,7 +48,7 @@ resource "aws_nat_gateway" "nat_gateway_az1b" {
     prevent_destroy = false
   }
 
-    depends_on = [ aws_internet_gateway.internet_gateway]
+    depends_on = [ var.internet_gateway_id]
 
 }
 
