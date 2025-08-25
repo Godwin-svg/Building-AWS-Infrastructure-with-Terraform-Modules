@@ -27,6 +27,10 @@ resource "aws_nat_gateway" "nat_gateway_az1a" {
       Name = "${var.project_name}-${var.environment}-nat_gateway_az1a"
     }
 
+    lifecycle {
+    prevent_destroy = false
+  }
+
     depends_on = [aws_internet_gateway.internet_gateway]
 
 }
@@ -40,6 +44,10 @@ resource "aws_nat_gateway" "nat_gateway_az1b" {
       Name = "${var.project_name}-${var.environment}-nat_gateway_az1b"
     }
 
+    lifecycle {
+    prevent_destroy = false
+  }
+
     depends_on = [ aws_internet_gateway.internet_gateway]
 
 }
@@ -52,6 +60,8 @@ resource "aws_route_table" "private_app_route_table_az1a" {
         cidr_block = var.default_cidr
         nat_gateway_id = aws_nat_gateway.nat_gateway_az1a.id 
     }
+
+    
 
     tags = {
       Name = "${var.project_name}-${var.environment}-private_app_route_table_az1a"
