@@ -27,7 +27,7 @@ resource "aws_nat_gateway" "nat_gateway_az1a" {
       Name = "${var.project_name}-${var.environment}-nat_gateway_az1a"
     }
 
-    depends_on = [var.internet_gateway]
+    depends_on = [aws_internet_gateway.internet_gateway]
 
 }
 
@@ -40,7 +40,7 @@ resource "aws_nat_gateway" "nat_gateway_az1b" {
       Name = "${var.project_name}-${var.environment}-nat_gateway_az1b"
     }
 
-    depends_on = [ var.internet_gateway]
+    depends_on = [ aws_internet_gateway.internet_gateway]
 
 }
 

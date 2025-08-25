@@ -158,6 +158,14 @@ What happens here:
 -The file will be private by default unless you change acl
 
 
+====> Note
+AWS S3 bucket naming rules:
+
+Must be all lowercase.
+
+"WebApp..." has uppercase → ❌ not allowed.
+- WebApp-inno-ecs-env-file-bucket-bucket = wrong
+-webapp-inno-ecs-env-file-bucket-bucket  = correct
 
 
 

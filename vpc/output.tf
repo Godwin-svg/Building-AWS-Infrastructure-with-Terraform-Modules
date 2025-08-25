@@ -19,7 +19,7 @@ output "vpc_id" {
 }
 
 # export internet gateway 
-output "internet_gateway" {
+output "internet_gateway_id" {
     value = aws_internet_gateway.internet-gateway 
 }
 
