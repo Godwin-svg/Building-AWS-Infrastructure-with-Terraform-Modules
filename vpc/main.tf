@@ -35,7 +35,7 @@ resource "aws_subnet" "public_subnet_az1a" {
     }
 
     lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
 }
