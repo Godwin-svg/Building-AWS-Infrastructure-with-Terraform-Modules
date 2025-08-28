@@ -170,7 +170,13 @@ Must be all lowercase.
 
 
 
+- Use the correct profile in AWS CLI
 
+Your InvalidAccessKeyId error happens because AWS CLI is using the default profile by default, not your dev profile.
+
+To fix, always add --profile dev:
+
+aws s3 sync ..\out s3://ig-bucket-12345-dev-us-east-1 --profile dev
 
 
 
